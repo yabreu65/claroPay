@@ -32,6 +32,10 @@ export function HeroSection({ logoSrc, bannerSrc }: HeroSectionProps) {
             sizes="100vw"
             priority
           />
+          <div className="absolute top-[55%] max-[380px]:left-[60%] left-[58%] -translate-x-1/2 -translate-y-1/2 text-center">
+            <h1 className="uppercase text-[#de271f] font-amx-bold text-[27px] leading-none">Tu plata <br/> conectada </h1>
+            <p className="text-[#949494] font-amx-medium text-[13px] leading-none">con todo lo que necesitás</p>
+          </div>
         </div>
       </div>
     </section>

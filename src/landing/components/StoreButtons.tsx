@@ -20,8 +20,8 @@ export function StoreButtons({
   const containerClass = isColumn
     ? "flex flex-col items-center justify-center gap-[clamp(8px,1.2vw,16px)]"
     : layout === "wrap"
-      ? "flex flex-wrap items-center justify-center gap-x-[clamp(8px,2vw,36px)] gap-y-2"
-      : "flex flex-wrap items-center justify-center gap-x-[clamp(8px,2vw,36px)] gap-y-2";
+      ? "flex flex-wrap items-center justify-center gap-x-[clamp(12px,2.6vw,40px)] gap-y-[clamp(8px,1.6vw,18px)]"
+      : "flex flex-wrap items-center justify-center gap-x-[clamp(12px,2.6vw,40px)] gap-y-[clamp(8px,1.6vw,18px)]";
 
   if (variant === "light") {
     const buttonClass = [
@@ -29,8 +29,8 @@ export function StoreButtons({
       "transition-all duration-[160ms] ease-out hover:scale-[1.03] active:scale-[0.98]",
       "focus:outline-none focus:ring-2 focus:ring-cp-red/50 focus:ring-offset-2",
       size === "final"
-        ? "h-[clamp(30px,7vw,55px)] w-[clamp(88px,23vw,230px)]"
-        : "h-[clamp(31px,4.2vw,60px)] w-[clamp(88px,17vw,245px)]",
+        ? "w-[clamp(96px,22vw,230px)] aspect-[90/29]"
+        : "w-[clamp(100px,25vw,245px)] aspect-[123/39]",
     ].join(" ");
 
     return (
@@ -43,7 +43,7 @@ export function StoreButtons({
                 alt={store.label}
                 width={size === "final" ? 180 : 246}
                 height={size === "final" ? 58 : 78}
-                className="h-full w-full object-cover"
+                className="block h-full w-full object-contain"
               />
             ) : (
               <span className="font-amx-medium text-xs uppercase text-[#646a73]">{store.label}</span>
