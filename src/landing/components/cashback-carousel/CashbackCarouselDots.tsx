@@ -4,9 +4,10 @@ export function CashbackCarouselDots({
   items,
   visibleIndex,
   onDotClick,
+  className,
 }: CashbackCarouselDotsProps) {
   return (
-    <div className="flex justify-center gap-[clamp(7px,1vw,14px)]">
+    <div className={`flex justify-center gap-[clamp(7px,1vw,14px)] ${className ?? ""}`}>
       {items.map((item, index) => {
         const isActive = index === visibleIndex;
 

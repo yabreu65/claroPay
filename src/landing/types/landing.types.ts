@@ -73,7 +73,7 @@ export type BrandFooterContent = {
 
 export type LegalFooterContent = {
   links: string[];
-  copyright: string;
+  disclaimers: string[];
 };
 
 export type LandingContent = {

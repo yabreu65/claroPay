@@ -6,10 +6,11 @@ export const LANDING_ASSETS = {
   heroLogo: "/landing/svg/logo.svg",
   heroBannerComplete: "/landing/svg/hero-banner-completo.svg",
   logo: "/landing/svg/logo.svg",
+  brandLogo: "/landing/svg/claro-logo.svg",
   carouselItemFrame: "/landing/svg/carousel-items.svg",
   servicesIcon: "/landing/svg/logo.svg",
   openAccountIcon: "/landing/svg/logo.svg",
-  ctaPhone: "/landing/svg/descarga-claro.svg",
+  ctaPhone: "/landing/svg/phone.svg",
 } as const;
 
 export const STORE_LINKS: StoreLink[] = [

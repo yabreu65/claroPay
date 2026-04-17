@@ -8,6 +8,8 @@ import type {
   CashbackCarouselSlidesProps,
   SlideRole,
 } from "@/landing/components/cashback-carousel/cashback-carousel.types";
+import { CashbackCarouselDots } from "@/landing/components/cashback-carousel/CashbackCarouselDots";
+
 
 type CarouselCardProps = {
   frameSrc: string;
@@ -41,7 +43,7 @@ function CarouselCard({
       />
 
       <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
-        <p className="font-amx-black-italic tracking-[-4px] text-[clamp(60px,17vw,190px)] leading-[0.84] text-[#666666]">
+        <p className="font-amx-black-italic tracking-[-4px] text-[clamp(68px,20vw,120px)] sm:text-[clamp(60px,8vw,190px)] leading-[0.84] text-[#666666]">
           {percentage}
         </p>
 
@@ -51,7 +53,7 @@ function CarouselCard({
             alt={label}
             width={252}
             height={53}
-            className="h-auto w-[clamp(100px,22vw,300px)]"
+            className="h-auto w-[clamp(116px,27vw,170px)] sm:w-[clamp(100px,22vw,300px)]"
           />
         ) : null}
 
@@ -83,6 +85,8 @@ export function CashbackCarouselSlides({
   items,
   frameSrc,
   slideRoles,
+  visibleIndex,
+  onDotClick,
 }: CashbackCarouselSlidesProps) {
   const desktopCardRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const prevRectsRef = useRef<Record<string, DOMRect>>({});
@@ -126,7 +130,7 @@ export function CashbackCarouselSlides({
 
   return (
     <>
-      <div className="relative h-[var(--carousel-stage-height)] w-full overflow-hidden sm:hidden">
+      <div className="relative h-[var(--carousel-stage-height)] w-full sm:hidden">
         {items.map((item, index) => {
           const role = slideRoles[index] ?? "hidden";
 
@@ -143,7 +147,7 @@ export function CashbackCarouselSlides({
                 subtitleLine1={item.subtitleLine1}
                 subtitleAccent={item.subtitleAccent}
                 showWordmark={item.showWordmark}
-                className={`absolute left-1/2 top-1/2 w-[var(--carousel-card-width)] origin-center aspect-[230/182] transition-all duration-[700ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] ${getSlideClasses(
+                className={`absolute left-1/2 top-[40%] w-[var(--carousel-card-width)] origin-center aspect-[250/200] transition-all duration-[700ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] ${getSlideClasses(
                   role,
                 )}`}
                 style={{ transform: getSlideTransform(role) }}
@@ -153,7 +157,7 @@ export function CashbackCarouselSlides({
         })}
       </div>
 
-      <div className="hidden h-[var(--carousel-stage-height)] w-full items-center justify-between px-0  sm:flex">
+      <div className="hidden h-[var(--carousel-stage-height)] w-full items-center justify-between px-0 sm:flex">
         {prevItem ? (
           <div className="z-20 flex h-full shrink-0 items-center justify-start">
             <div
@@ -218,6 +222,13 @@ export function CashbackCarouselSlides({
           <div className="w-[calc(var(--carousel-card-width)*0.86)]" aria-hidden="true" />
         )}
       </div>
+
+      <CashbackCarouselDots
+        items={items}
+        visibleIndex={visibleIndex}
+        onDotClick={onDotClick}
+        className="relative -top-6 max-[430px]:-top-12 sm:top-0"
+      />
     </>
   );
 }

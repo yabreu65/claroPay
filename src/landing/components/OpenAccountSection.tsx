@@ -7,22 +7,22 @@ type OpenAccountSectionProps = {
 };
 
 export function OpenAccountSection({ content }: OpenAccountSectionProps) {
-  const { title, steps } = content;
+  const { steps } = content;
 
   return (
-    <section className="relative w-full px-5 pb-[clamp(92px,12vw,220px)]">
+    <section className="relative w-full px-1 pb-12">
       <div className="relative mx-auto w-full max-w-[1180px]">
         <Image
-          src="/landing/svg/abri-tu-cuenta.svg"
-          alt={title}
-          width={667}
-          height={389}
+          src="/landing/images/abri-tu-cuenta.png"
+          alt="abri tu cuenta"
+          width={820}
+          height={478}
           className="h-auto w-full"
           sizes="(min-width: 1280px) 1180px, 92vw"
         />
 
-        <div className="absolute inset-x-[9%] bottom-[18%] z-10 sm:inset-x-[11%] sm:bottom-[19%]">
-          <div className="grid grid-cols-2 gap-x-[8%] gap-y-[clamp(0px,0.8vw,10px)]">
+        <div className="absolute w-[65%] left-1/2 -translate-x-1/2 top-[65%] -translate-y-[20%]">
+          <div className="grid grid-cols-2 gap-x-[50%] gap-y-2 top">
             {steps.map((step, index) => (
               <div key={step} className="flex items-baseline gap-[clamp(4px,0.8vw,14px)] whitespace-nowrap">
                 <span className="font-amx-bold text-[clamp(10px,2vw,32px)] leading-none text-cp-red">

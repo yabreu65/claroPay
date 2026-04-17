@@ -1,13 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { carouselVars } from "@/landing/components/cashback-carousel/cashback-carousel.constants";
 import type {
   CashbackCarouselProps,
   SlideRole,
 } from "@/landing/components/cashback-carousel/cashback-carousel.types";
 import { CashbackCarouselSlides } from "@/landing/components/cashback-carousel/CashbackCarouselSlides";
-import { CashbackCarouselDots } from "@/landing/components/cashback-carousel/CashbackCarouselDots";
 
 export function CashbackCarousel({ items, frameSrc }: CashbackCarouselProps) {
   const [activeStep, setActiveStep] = useState(0);
@@ -45,12 +43,12 @@ export function CashbackCarousel({ items, frameSrc }: CashbackCarouselProps) {
 
   return (
     <div
-      className="w-full flex flex-col items-center justify-center [--carousel-offset:clamp(210px,48vw,520px)]"
-      style={carouselVars}
+      className="w-full flex flex-col items-center justify-center [--carousel-card-width:clamp(240px,68vw,340px)] [--carousel-stage-height:clamp(240px,56vw,360px)] max-[430px]:[--carousel-offset:240px] [--carousel-offset:270px] sm:[--carousel-card-width:clamp(230px,31vw,430px)] sm:[--carousel-stage-height:clamp(210px,30vw,520px)] sm:[--carousel-offset:clamp(210px,48vw,520px)]"
     >
-      <CashbackCarouselSlides items={items} frameSrc={frameSrc} slideRoles={slideRoles} />
-      <CashbackCarouselDots
+      <CashbackCarouselSlides
         items={items}
+        frameSrc={frameSrc}
+        slideRoles={slideRoles}
         visibleIndex={visibleIndex}
         onDotClick={goToDot}
       />

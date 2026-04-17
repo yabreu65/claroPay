@@ -11,10 +11,13 @@ export type CashbackCarouselSlidesProps = {
   items: CashbackCarouselItem[];
   frameSrc: string;
   slideRoles: SlideRole[];
+  visibleIndex: number;
+  onDotClick: (index: number) => void;
 };
 
 export type CashbackCarouselDotsProps = {
   items: CashbackCarouselItem[];
   visibleIndex: number;
   onDotClick: (index: number) => void;
+  className?: string;
 };

@@ -14,15 +14,14 @@ export function CashbackSection({
   logoSrc,
 }: CashbackSectionProps) {
   return (
-    <section className="relative w-full px-0 pb-[clamp(86px,12vw,210px)]">
-      <div className="relative mx-auto h-[clamp(590px,120vw,960px)] w-full max-w-[1440px] overflow-hidden sm:h-[clamp(760px,67vw,970px)]">
+    <section className="relative w-full px-0 pb-0">
+      <div className="relative mx-auto h-[clamp(480px,112vw,900px)] w-auto max-w-[1440px]">
         <Image
           src="/landing/svg/carousel-bg.svg"
           alt=""
-          fill
-          className="object-cover object-center sm:hidden"
-          sizes="100vw"
-          aria-hidden="true"
+          width={1000}
+          height={500}
+          className="w-full object-cover h-auto sm:hidden"
         />
         <Image
           src="/landing/images/carousel-bg-desktop-1.png"
@@ -33,7 +32,7 @@ export function CashbackSection({
           aria-hidden="true"
         />
 
-        <div className="absolute inset-x-0 top-[9%] z-10 flex flex-col items-center px-4 sm:top-[8%]">
+        <div className="absolute inset-x-0 top-[6%] z-10 flex flex-col items-center px-4 sm:top-[8%]">
           <div className="flex items-end justify-center">
             <p className="mb-[clamp(2px,0.3vw,5px)] mr-[clamp(4px,0.9vw,12px)] font-amx-black-italic text-[clamp(17px,3.4vw,42px)] uppercase leading-none tracking-[-0.04em] text-[#4d4d4d]">
               {content.kickerStart}
@@ -60,8 +59,11 @@ export function CashbackSection({
             priority
           />
 
-          <div className="mt-[clamp(24px,4vw,62px)] w-full">
-            <CashbackCarousel items={content.carouselItems} frameSrc={carouselItemFrameSrc} />
+          <div className="w-full max-[430px]:mt-2 mt-6 sm:mt-[clamp(24px,4vw,62px)]">
+            <CashbackCarousel
+              items={content.carouselItems}
+              frameSrc={carouselItemFrameSrc}
+            />
           </div>
         </div>
       </div>

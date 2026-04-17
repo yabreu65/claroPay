@@ -29,7 +29,7 @@ export function StoreButtons({
       "transition-all duration-[160ms] ease-out hover:scale-[1.03] active:scale-[0.98]",
       "focus:outline-none focus:ring-2 focus:ring-cp-red/50 focus:ring-offset-2",
       size === "final"
-        ? "h-[clamp(30px,4vw,55px)] w-[clamp(88px,16vw,230px)]"
+        ? "h-[clamp(30px,7vw,55px)] w-[clamp(88px,23vw,230px)]"
         : "h-[clamp(31px,4.2vw,60px)] w-[clamp(88px,17vw,245px)]",
     ].join(" ");
 
@@ -43,7 +43,7 @@ export function StoreButtons({
                 alt={store.label}
                 width={size === "final" ? 180 : 246}
                 height={size === "final" ? 58 : 78}
-                className="h-full w-full object-contain"
+                className="h-full w-full object-cover"
               />
             ) : (
               <span className="font-amx-medium text-xs uppercase text-[#646a73]">{store.label}</span>
@@ -65,9 +65,9 @@ export function StoreButtons({
           }`}
         >
           <span className="block font-amx-medium text-[10px] uppercase tracking-[0.14em] text-white/70">
-            {store.helper}
+           {store.helper}
           </span>
-          <span className="block font-amx-bold text-base leading-tight">{store.label}</span>
+          <span className="block font-amx-bold text-base leading-tight">wwww{store.label}</span>
         </a>
       ))}
     </div>

@@ -69,7 +69,7 @@ export default function ClaroPayPage() {
           />
         </main>
 
-        <BrandFooter content={landingContent.brandFooter} logoSrc={LANDING_ASSETS.logo} />
+        <BrandFooter content={landingContent.brandFooter} logoSrc={LANDING_ASSETS.brandLogo} />
         <LegalFooter content={landingContent.legalFooter} />
       </div>
     </div>

@@ -8,44 +8,36 @@ type FinalCTASectionProps = {
   phoneMockupSrc: string;
 };
 
-export function FinalCTASection({ stores, phoneMockupSrc }: FinalCTASectionProps) {
+export function FinalCTASection({ content, stores, phoneMockupSrc }: FinalCTASectionProps) {
+  const headlineLines = content.headlineHtml
+    .split(/<br\s*\/?>/i)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
   return (
     <section className="relative pb-0">
-      {/* MOBILE / TABLET NARROW */}
-      <div className="md:hidden">
-        <div className="relative ml-auto flex min-h-[clamp(112px,26vw,198px)] w-full items-center justify-center overflow-hidden bg-[#757575] px-4">
+      <div>
+        <div className="relative flex rounded-l-[70px] min-h-[clamp(120px,28vw,260px)] w-[90%] ml-auto pl-[clamp(26px,8vw,116px)] items-center  bg-[#757575]  max-[380px]:px-4">
           <Image
             src={phoneMockupSrc}
             alt="Descargá Claro Pay y conectá tu plata con todo"
-            width={352}
-            height={109}
-            className="h-auto w-[min(86vw,680px)] object-contain"
-            sizes="86vw"
+            width={128}
+            height={154}
+            className="relative z-10 h-auto -mt-[20px] w-[clamp(100px,25vw,230px)] shrink-0 -translate-y-1 max-[389px]:-translate-x-1  -translate-x-4 object-contain sm:-translate-y-3"
+            sizes="(min-width: 1280px) 230px, 25vw"
           />
+
+          <h2 className="relative z-10  max-w-[min(58vw,760px)] font-amx-bold text-[clamp(22px,5vw,58px)] text-center italic leading-[0.98] tracking-[-0.045em] text-white">
+            {headlineLines.map((line) => (
+              <span key={line} className="block whitespace-nowrap">
+                {line}
+              </span>
+            ))}
+          </h2>
         </div>
 
-        <div className="relative z-10 w-[89%] rounded-r-[999px] bg-[#de2626] py-[clamp(7px,2vw,16px)] pl-[clamp(10px,3vw,28px)] pr-[clamp(14px,5vw,52px)]">
+        <div className="relative z-10 w-[89%] rounded-r-[999px] bg-[#de2626] py-[clamp(24px,3.2vw,26px)] pl-[clamp(10px,3vw,28px)] pr-[clamp(14px,5vw,52px)]">
           <StoreButtons stores={stores} variant="light" layout="row" size="final" />
-        </div>
-      </div>
-
-      {/* DESKTOP >= 768 */}
-      <div className="hidden md:block">
-        <div className="relative min-h-[clamp(220px,22vw,340px)] bg-[#757575]">
-          <div className="absolute left-0 top-1/2 z-20 flex min-h-[clamp(190px,19vw,290px)] w-[31%] -translate-y-1/2 items-center justify-center rounded-r-[999px] bg-[#de2626] px-[clamp(12px,2vw,42px)] py-[clamp(14px,2vw,34px)]">
-            <StoreButtons stores={stores} variant="light" layout="column" size="final" />
-          </div>
-
-          <div className="mx-auto flex min-h-[clamp(220px,22vw,340px)] w-full max-w-[1440px] items-center justify-end px-[clamp(24px,4vw,78px)]">
-            <Image
-              src={phoneMockupSrc}
-              alt="Descargá Claro Pay y conectá tu plata con todo"
-              width={352}
-              height={109}
-              className="h-auto w-[clamp(420px,55vw,860px)] object-contain"
-              sizes="(min-width: 1280px) 860px, 55vw"
-            />
-          </div>
         </div>
       </div>
     </section>

@@ -77,7 +77,9 @@ export function ServicesRadialCarousel({
   const [isUserAnnouncing, setIsUserAnnouncing] = useState(false);
   const [iconSrcById, setIconSrcById] = useState<Record<string, string>>({});
 
-  const normalizedActiveIndex = safeItems.length ? mod(activeIndex, safeItems.length) : 0;
+  const normalizedActiveIndex = safeItems.length
+    ? mod(activeIndex, safeItems.length)
+    : 0;
   const isPaused = isHoverPaused || isInteractionPaused;
 
   useEffect(() => {
@@ -129,7 +131,12 @@ export function ServicesRadialCarousel({
 
   const positionedItems = useMemo(() => {
     const total = safeItems.length;
-    const visibleSlots: SlotKey[] = ["active", "topLeft", "topCenter", "topRight"];
+    const visibleSlots: SlotKey[] = [
+      "active",
+      "topLeft",
+      "topCenter",
+      "topRight",
+    ];
 
     if (total <= 4) {
       return safeItems.map((item, index) => {
@@ -217,7 +224,9 @@ export function ServicesRadialCarousel({
               >
                 <div className="relative w-full h-full flex items-center justify-center rounded-full">
                   <Image
-                    src={iconSrcById[item.id] || item.iconSrc || fallbackIconSrc}
+                    src={
+                      iconSrcById[item.id] || item.iconSrc || fallbackIconSrc
+                    }
                     alt={item.title}
                     fill
                     className="object-contain scale-[0.5] transition-transform duration-300"
@@ -235,7 +244,7 @@ export function ServicesRadialCarousel({
           aria-live={isUserAnnouncing ? "polite" : "off"}
           key={activeItem.id}
         >
-          <h2 
+          <h2
             className="font-amx-black text-[clamp(34px,4.8vw,68px)] uppercase leading-[0.87] tracking-[-0.03em] text-cp-red transition-all duration-[320ms] ease-out"
             dangerouslySetInnerHTML={{ __html: activeItem.title }}
           />

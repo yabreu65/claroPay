@@ -11,7 +11,7 @@ export function ServicesSection({
   servicesIconSrc,
 }: ServicesSectionProps) {
   return (
-    <section className="px-5 pb-[clamp(78px,12vw,230px)]">
+    <section className="px-5 pb-12">
       <ServicesRadialCarousel
         items={content.carouselItems}
         fallbackIconSrc={servicesIconSrc}
