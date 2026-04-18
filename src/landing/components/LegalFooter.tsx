@@ -29,7 +29,7 @@ export function LegalFooter({ content }: LegalFooterProps) {
           ))}
         </div>
 
-        <div className="mt-[clamp(22px,3vw,44px)] w-full min-w-0 space-y-3 font-myriad text-[clamp(5px,0.8vw,12px)] uppercase leading-[1.45] tracking-[0.03em] text-white/70 sm:tracking-[0.05em]">
+        <div className="mt-[clamp(22px,3vw,44px)] w-full min-w-0 space-y-3 font-myriad text-[clamp(5px,1.5vw,12px)] uppercase leading-[1.45] tracking-[0.03em] text-white/70 sm:tracking-[0.05em]">
           {content.disclaimers.map((disclaimer) => (
             <p key={disclaimer} className="w-full max-w-full">
               {disclaimer}

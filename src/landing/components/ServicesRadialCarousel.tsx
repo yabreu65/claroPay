@@ -10,6 +10,7 @@ type ServicesRadialCarouselProps = {
 };
 
 const AUTO_PLAY_MS = 3200;
+const ROTATION_DURATION_MS = 900;
 const mod = (n: number, m: number) => ((n % m) + m) % m;
 
 type SlotKey = "active" | "topLeft" | "topCenter" | "topRight";
@@ -71,6 +72,7 @@ export function ServicesRadialCarousel({
 }: ServicesRadialCarouselProps) {
   const safeItems = items.slice(0, 4);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [displayedTextIndex, setDisplayedTextIndex] = useState(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [isHoverPaused, setIsHoverPaused] = useState(false);
   const [isInteractionPaused, setIsInteractionPaused] = useState(false);
@@ -79,6 +81,9 @@ export function ServicesRadialCarousel({
 
   const normalizedActiveIndex = safeItems.length
     ? mod(activeIndex, safeItems.length)
+    : 0;
+  const normalizedDisplayedTextIndex = safeItems.length
+    ? mod(displayedTextIndex, safeItems.length)
     : 0;
   const isPaused = isHoverPaused || isInteractionPaused;
 
@@ -116,6 +121,17 @@ export function ServicesRadialCarousel({
 
     return () => window.clearInterval(interval);
   }, [safeItems.length, isPaused, prefersReducedMotion]);
+
+  useEffect(() => {
+    if (!safeItems.length) return;
+
+    const textDelayMs = prefersReducedMotion ? 0 : ROTATION_DURATION_MS;
+    const timer = window.setTimeout(() => {
+      setDisplayedTextIndex(normalizedActiveIndex);
+    }, textDelayMs);
+
+    return () => window.clearTimeout(timer);
+  }, [normalizedActiveIndex, prefersReducedMotion, safeItems.length]);
 
   const handleSelect = (index: number) => {
     setActiveIndex(index);
@@ -173,13 +189,13 @@ export function ServicesRadialCarousel({
     });
   }, [safeItems, normalizedActiveIndex]);
 
-  const activeItem = safeItems[normalizedActiveIndex];
+  const activeItem = safeItems[normalizedDisplayedTextIndex];
 
   if (!safeItems.length) return null;
 
   return (
     <div
-      className="relative z-10 w-full [--orbit-size:120px] [--active-size:154px] [--orbit-offset-x:94px] [--active-top:66%] [--orbit-top:44%] [--orbit-center-top:22%] sm:[--orbit-size:clamp(150px,19vw,250px)] sm:[--active-size:clamp(190px,24vw,330px)] sm:[--orbit-offset-x:15vw] sm:[--active-top:65%] sm:[--orbit-top:41%] sm:[--orbit-center-top:14%] md:[--orbit-center-top:17%] lg:[--orbit-center-top:11%] lg:[--orbit-size:clamp(190px,16vw,260px)] lg:[--active-size:clamp(250px,22vw,360px)] 2xl:[--orbit-size:260px] 2xl:[--active-size:360px] 2xl:[--orbit-offset-x:205px] 2xl:[--active-top:64%] 2xl:[--orbit-top:37%] 2xl:[--orbit-center-top:1%]"
+      className="relative z-10 w-full mt-12 sm:mt-20 lg:mt-30  2xl:mt-60 [--orbit-size:120px] [--active-size:154px] [--orbit-offset-x:94px] [--active-top:66%] [--orbit-top:44%] [--orbit-center-top:22%] sm:[--orbit-size:clamp(150px,21vw,250px)] sm:[--active-size:clamp(190px,24vw,330px)] sm:[--orbit-offset-x:15vw] sm:[--active-top:65%] sm:[--orbit-top:41%] sm:[--orbit-center-top:16%] md:[--orbit-center-top:17%] lg:[--orbit-center-top:11%] lg:[--orbit-size:clamp(190px,22vw,260px)] lg:[--active-size:clamp(250px,22vw,360px)] 2xl:[--orbit-size:283px] 2xl:[--active-size:360px] 2xl:[--orbit-offset-x:205px] 2xl:[--active-top:64%] 2xl:[--orbit-top:37%] 2xl:[--orbit-center-top:1%]"
       onMouseEnter={() => setIsHoverPaused(true)}
       onMouseLeave={() => setIsHoverPaused(false)}
       onFocusCapture={() => setIsInteractionPaused(true)}
@@ -199,9 +215,7 @@ export function ServicesRadialCarousel({
               key={item.id}
               type="button"
               onClick={() => handleSelect(index)}
-              className={`absolute transition-[left,top,width,height,opacity,transform] ease-in-out ${
-                prefersReducedMotion ? "duration-0" : "duration-[900ms]"
-              }`}
+              className="absolute transition-[left,top,width,height,opacity,transform] ease-in-out"
               style={{
                 left: slot.left,
                 top: slot.top,
@@ -209,6 +223,7 @@ export function ServicesRadialCarousel({
                 height: slot.height,
                 opacity: slot.opacity,
                 zIndex: slot.zIndex,
+                transitionDuration: prefersReducedMotion ? "0ms" : `${ROTATION_DURATION_MS}ms`,
                 transform: `translate(-50%, -50%) scale(${slot.scale})`,
               }}
               aria-label={`Ver ${item.title}`}

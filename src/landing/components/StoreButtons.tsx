@@ -16,9 +16,10 @@ export function StoreButtons({
   layout = "row",
   size = "intro",
 }: StoreButtonsProps) {
-  const isColumn = layout === "column" || layout === "column-md";
-  const containerClass = isColumn
+  const containerClass = layout === "column"
     ? "flex flex-col items-center justify-center gap-[clamp(8px,1.2vw,16px)]"
+    : layout === "column-md"
+      ? "flex flex-wrap items-center justify-center gap-x-[clamp(12px,2.6vw,40px)] gap-y-[clamp(8px,1.6vw,18px)] md:flex-col md:gap-[clamp(6px,0.9vw,12px)]"
     : layout === "wrap"
       ? "flex flex-wrap items-center justify-center gap-x-[clamp(12px,2.6vw,40px)] gap-y-[clamp(8px,1.6vw,18px)]"
       : "flex flex-wrap items-center justify-center gap-x-[clamp(12px,2.6vw,40px)] gap-y-[clamp(8px,1.6vw,18px)]";
@@ -29,7 +30,7 @@ export function StoreButtons({
       "transition-all duration-[160ms] ease-out hover:scale-[1.03] active:scale-[0.98]",
       "focus:outline-none focus:ring-2 focus:ring-cp-red/50 focus:ring-offset-2",
       size === "final"
-        ? "w-[clamp(96px,22vw,230px)] aspect-[90/29]"
+        ? "w-[clamp(96px,22vw,230px)] aspect-[90/29] md:w-[clamp(112px,13vw,184px)]"
         : "w-[clamp(100px,25vw,245px)] aspect-[123/39]",
     ].join(" ");
 

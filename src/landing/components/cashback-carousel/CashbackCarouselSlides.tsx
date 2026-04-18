@@ -39,11 +39,12 @@ function CarouselCard({
         alt=""
         fill
         className="pointer-events-none object-contain"
+        sizes="(min-width: 640px) var(--carousel-card-width), min(68vw, 340px)"
         aria-hidden="true"
       />
 
       <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
-        <p className="font-amx-black-italic tracking-[-4px] text-[clamp(68px,20vw,120px)] sm:text-[clamp(60px,8vw,190px)] leading-[0.84] text-[#666666]">
+        <p className="font-amx-black-italic tracking-[-4px] text-[80px] sm:text-[68px] xl:text-[140px] leading-[0.84] text-[#666666]">
           {percentage}
         </p>
 
@@ -57,12 +58,12 @@ function CarouselCard({
           />
         ) : null}
 
-        <p className="mt-1 font-amx-italic text-[clamp(14px,3.4vw,38px)] uppercase leading-[0.95] text-[#656569]">
+        <p className="mt-1 font-amx-italic text-[clamp(18px,2vw,38px)] uppercase leading-[0.95] text-[#656569]">
           {subtitleLine1}
         </p>
 
         {subtitleAccent ? (
-          <p className="font-amx-black-italic text-[clamp(15px,3.4vw,38px)] uppercase leading-[0.95] text-[#de2626]">
+          <p className="font-amx-black-italic text-[clamp(18px,3.4vw,38px)] uppercase leading-[0.95] text-[#de2626]">
             {subtitleAccent}
           </p>
         ) : null}
@@ -227,7 +228,7 @@ export function CashbackCarouselSlides({
         items={items}
         visibleIndex={visibleIndex}
         onDotClick={onDotClick}
-        className="relative -top-6 max-[430px]:-top-12 sm:top-0"
+        className="relative -top-6 max-[430px]:-top-12 sm:-top-3"
       />
     </>
   );
