@@ -11,7 +11,7 @@ export function OpenAccountSection({ content }: OpenAccountSectionProps) {
 
   return (
     <section className="relative w-full max-sm:pb-[32px] sm:py-[48px] 2xl:py-32">
-      <div className="relative mx-auto  w-full lg:max-w-[1000px] xl:max-w-[1200px]">
+      <div className="relative mx-auto  w-full lg:max-w-[850px] ">
         <Image
           src="/landing/svg/abri-tu-cuenta-2.svg"
           alt="abri tu cuenta"
@@ -21,9 +21,9 @@ export function OpenAccountSection({ content }: OpenAccountSectionProps) {
           sizes="(min-width: 1280px) 1180px, 92vw"
         />
 
-        <div className="absolute flex flex-col items-center justify-between gap-4 w-[60%] left-1/2 -translate-x-[60%] top-[47%] lg:top-[44%] lg:translate-y-[-50%] -translate-y-1/2">
+        <div className="absolute flex flex-col items-center justify-between gap-4 w-[65%] left-1/2 -translate-x-[60%] top-[47%] lg:top-[44%] lg:translate-y-[-50%] -translate-y-1/2">
           <div className="flex items-center justify-center top-0 gap-6 lg:gap-20 mb-3">
-            <div className="w-12 sm:w-[64px] md:w-[80px] lg:w-[90px] xl:w-[100px]">
+            <div className="w-12 sm:w-[64px] md:w-[80px] ">
               <Image
                 src="/landing/svg/telefono+.svg"
                 alt="telefono+"
@@ -33,10 +33,10 @@ export function OpenAccountSection({ content }: OpenAccountSectionProps) {
               />
             </div>
             <div className="uppercase text-[#de271f] lg:mt-8">
-              <h1 className="font-amx-bold max-[400px]:text-[20px] text-2xl sm:text-[38px] md:text-[45px] lg:text-[55px] xl:text-[70px] leading-none">
+              <h1 className="font-amx-bold max-[400px]:text-[20px] text-2xl sm:text-[45px]  leading-none">
                 ABRÍ TU CUENTA <br /> GRATUITA{" "}
               </h1>
-              <p className="font-amx-medium max-[400px]:text-sm text-base sm:text-xl md:text-[28px] lg:text-[32px] xl:text-[40px]">EN SIMPLES PASOS:</p>
+              <p className="font-amx-medium max-[400px]:text-sm text-base sm:text-xl xl:text-3xl">EN SIMPLES PASOS:</p>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-x-[30%] lg:gap-x-[40%] gap-y-[clamp(24px,2vw,46px)] top">
@@ -45,10 +45,10 @@ export function OpenAccountSection({ content }: OpenAccountSectionProps) {
                 key={step}
                 className="flex items-baseline gap-[clamp(4px,1vw,14px)] whitespace-nowrap"
               >
-                <span className="font-amx-bold text-[clamp(18px,4vw,45px)] leading-none text-cp-red">
+                <span className="font-amx-bold text-[clamp(18px,4vw,35px)] leading-none text-cp-red">
                   {index + 1}
                 </span>
-                <span className="font-amx-regular text-[clamp(18px,4vw,45px)] tracking-[-1px] leading-none text-cp-description">
+                <span className="font-amx-regular text-[clamp(18px,4vw,35px)] tracking-[-1px] leading-none text-cp-description">
                   {step}
                 </span>
               </div>

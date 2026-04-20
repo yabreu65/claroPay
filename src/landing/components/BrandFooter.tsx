@@ -8,7 +8,7 @@ type BrandFooterProps = {
 
 export function BrandFooter({ content, logoSrc }: BrandFooterProps) {
   return (
-    <section className="bg-[#1d1d1b] px-5 pt-2 text-white">
+    <section className="bg-[#1d1d1b] px-5 py-1 sm:py-2 text-white">
       <div className="mx-auto flex max-w-[1120px] flex-col items-center text-center">
         <Image
           src={logoSrc}
