@@ -195,7 +195,7 @@ export function ServicesRadialCarousel({
 
   return (
     <div
-      className="relative z-10 w-full mt-12 sm:mt-20 lg:mt-30  2xl:mt-60 [--orbit-size:120px] [--active-size:154px] [--orbit-offset-x:94px] [--active-top:66%] [--orbit-top:44%] [--orbit-center-top:22%] sm:[--orbit-size:clamp(150px,21vw,250px)] sm:[--active-size:clamp(190px,24vw,330px)] sm:[--orbit-offset-x:15vw] sm:[--active-top:65%] sm:[--orbit-top:41%] sm:[--orbit-center-top:16%] md:[--orbit-center-top:17%] lg:[--orbit-center-top:11%] lg:[--orbit-size:clamp(190px,22vw,260px)] lg:[--active-size:clamp(250px,22vw,360px)] 2xl:[--orbit-size:283px] 2xl:[--active-size:360px] 2xl:[--orbit-offset-x:205px] 2xl:[--active-top:64%] 2xl:[--orbit-top:37%] 2xl:[--orbit-center-top:1%]"
+      className="relative z-10 w-full mt-10 sm:mt-20 lg:mt-10 xl:mt-12  2xl:mt-20  [--orbit-size:32vw] [--active-size:40vw] [--orbit-offset-x:25vw] sm:[--orbit-size:27vw] sm:[--active-size:35vw] sm:[--orbit-offset-x:20vw] md:[--orbit-size:25vw] md:[--active-size:30vw] lg:[--orbit-size:20vw] lg:[--active-size:25vw] lg:[--orbit-offset-x:15vw] xl:[--orbit-size:15vw] xl:[--active-size:20vw] xl:[--orbit-offset-x:11vw] 2xl:[--orbit-size:12vw] 2xl:[--active-size:15vw] 2xl:[--orbit-offset-x:8vw] [--active-top:66%] [--orbit-top:44%] [--orbit-center-top:22%] sm:[--orbit-center-top:20%]"
       onMouseEnter={() => setIsHoverPaused(true)}
       onMouseLeave={() => setIsHoverPaused(false)}
       onFocusCapture={() => setIsInteractionPaused(true)}
