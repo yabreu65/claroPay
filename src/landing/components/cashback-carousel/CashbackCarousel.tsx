@@ -11,7 +11,9 @@ export function CashbackCarousel({ items, frameSrc }: CashbackCarouselProps) {
   const [activeStep, setActiveStep] = useState(0);
 
   const visibleIndex =
-    items.length === 0 ? 0 : ((activeStep % items.length) + items.length) % items.length;
+    items.length === 0
+      ? 0
+      : ((activeStep % items.length) + items.length) % items.length;
 
   useEffect(() => {
     if (items.length <= 1) return;
@@ -25,13 +27,17 @@ export function CashbackCarousel({ items, frameSrc }: CashbackCarouselProps) {
 
   const slideRoles = useMemo<SlideRole[]>(() => {
     return items.map((_, index) => {
-      if (index === visibleIndex) return "active";
-      if (index === (visibleIndex - 1 + items.length) % items.length) return "prev";
-      if (index === (visibleIndex + 1) % items.length) return "next";
+      const diff = (index - visibleIndex + items.length) % items.length;
+
+      if (diff === 0) return "active";
+      if (diff === 1) return "next";
+      if (diff === items.length - 1) return "prev";
+      if (diff === 2) return "far-next";
+      if (diff === items.length - 2) return "far-prev";
       return "hidden";
     });
   }, [items, visibleIndex]);
-
+  
   if (items.length === 0) return null;
 
   const goToDot = (targetIndex: number) => {
@@ -42,9 +48,7 @@ export function CashbackCarousel({ items, frameSrc }: CashbackCarouselProps) {
   };
 
   return (
-    <div
-      className="w-full flex flex-col items-center justify-center [--carousel-card-width:clamp(240px,68vw,340px)] [--carousel-stage-height:clamp(240px,56vw,360px)] max-[430px]:[--carousel-offset:240px] [--carousel-offset:270px] sm:[--carousel-offset:clamp(210px,48vw,520px)] sm:[--carousel-card-width:clamp(230px,31vw,430px)] sm:[--carousel-stage-height:clamp(210px,30vw,520px)]"
-    >
+    <div className="w-full flex flex-col items-center justify-center [--carousel-card-width:clamp(240px,68vw,340px)] [--carousel-stage-height:clamp(240px,56vw,360px)] max-[430px]:[--carousel-offset:240px] [--carousel-offset:270px] sm:[--carousel-offset:clamp(210px,48vw,520px)] sm:[--carousel-card-width:clamp(230px,31vw,430px)] sm:[--carousel-stage-height:clamp(210px,30vw,520px)]">
       <CashbackCarouselSlides
         items={items}
         frameSrc={frameSrc}

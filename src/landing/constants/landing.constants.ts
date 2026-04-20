@@ -1,7 +1,7 @@
 import type { StoreLink } from "@/landing/types/landing.types";
 
 export const LANDING_ASSETS = {
-  backgroundBase: "/landing/svg/fondoBg-1.svg",
+  backgroundBase: "/landing/images/C.Pay _ Actualización Landing•fondo.jpg",
   backgroundOverlay: "/landing/svg/fondoBg-2.svg",
   heroLogo: "/landing/svg/logo.svg",
   heroBannerComplete: "/landing/svg/hero-banner-completo.svg",

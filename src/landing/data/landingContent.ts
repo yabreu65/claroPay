@@ -46,6 +46,12 @@ export const landingContent: LandingContent = {
         label: "CA$HBACK",
         subtitleLine1: "EN EL PAGO DE TU FACTURA",
       },
+      {
+        id: "compra",
+        percentage: "50%",
+        label: "CA$HBACK",
+        subtitleLine1: "EN COMPRA DE PACKS",
+      },
     ],
   },
   services: {

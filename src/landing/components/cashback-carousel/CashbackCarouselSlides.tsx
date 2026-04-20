@@ -91,10 +91,12 @@ export function CashbackCarouselSlides({
 }: CashbackCarouselSlidesProps) {
   const desktopCardRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const prevRectsRef = useRef<Record<string, DOMRect>>({});
+  const hasInitializedRef = useRef(false);
 
   useLayoutEffect(() => {
     if (typeof window === "undefined" || !window.matchMedia("(min-width: 640px)").matches) {
       prevRectsRef.current = {};
+      hasInitializedRef.current = false;
       return;
     }
 
@@ -105,9 +107,32 @@ export function CashbackCarouselSlides({
       const rect = node.getBoundingClientRect();
       if (rect.width === 0 || rect.height === 0) return;
       nextRects[id] = rect;
+    });
+
+    if (!hasInitializedRef.current) {
+      hasInitializedRef.current = true;
+      prevRectsRef.current = nextRects;
+      return;
+    }
+
+    Object.entries(desktopCardRefs.current).forEach(([id, node]) => {
+      if (!node) return;
+      const rect = node.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
 
       const prevRect = prevRectsRef.current[id];
-      if (!prevRect) return;
+      if (!prevRect) {
+        node.style.transition = "opacity 300ms ease, transform 300ms ease";
+        node.style.opacity = "0";
+        node.style.transform = "translateX(-30px)";
+        node.getBoundingClientRect();
+        requestAnimationFrame(() => {
+          node.style.transition = "opacity 700ms ease, transform 700ms ease";
+          node.style.opacity = "1";
+          node.style.transform = "translateX(0)";
+        });
+        return;
+      }
 
       const dx = prevRect.left - rect.left;
       if (Math.abs(dx) < 0.5) return;

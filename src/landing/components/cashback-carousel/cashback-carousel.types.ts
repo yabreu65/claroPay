@@ -1,6 +1,6 @@
 import type { CashbackCarouselItem } from "@/landing/types/landing.types";
 
-export type SlideRole = "active" | "prev" | "next" | "hidden";
+export type SlideRole = "active" | "prev" | "next" | "far-prev" | "far-next"|"hidden";
 
 export type CashbackCarouselProps = {
   items: CashbackCarouselItem[];

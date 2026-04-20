@@ -18,18 +18,18 @@ export default function ClaroPayPage() {
     <div className="relative isolate overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
         <Image
-          src={LANDING_ASSETS.backgroundBase}
-          alt=""
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
-        />
-        <Image
           src={LANDING_ASSETS.backgroundOverlay}
           alt=""
           fill
           className="object-cover opacity-80"
+          sizes="100vw"
+          priority
+        />
+        <Image
+          src={LANDING_ASSETS.backgroundBase}
+          alt=""
+          fill
+          className="object-cover"
           sizes="100vw"
           priority
         />
