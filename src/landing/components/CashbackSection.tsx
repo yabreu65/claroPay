@@ -15,7 +15,7 @@ export function CashbackSection({
 }: CashbackSectionProps) {
   return (
     <section className="relative w-full px-0 pb-0">
-      <div className="relative mx-auto w-full 2xl:max-w-[1580px]">
+      <div className="relative mx-auto w-full max-w-[1280px]">
         <Image
           src="/landing/svg/carousel-bg.svg"
           alt=""

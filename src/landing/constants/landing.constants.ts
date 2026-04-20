@@ -4,7 +4,7 @@ export const LANDING_ASSETS = {
   backgroundBase: "/landing/images/C.Pay _ Actualización Landing•fondo.jpg",
   backgroundOverlay: "/landing/svg/fondoBg-2.svg",
   heroLogo: "/landing/svg/logo.svg",
-  heroBannerComplete: "/landing/svg/hero-banner-completo.svg",
+  heroBannerComplete: "/landing/images/hero-banner-completo.png",
   logo: "/landing/svg/logo.svg",
   brandLogo: "/landing/svg/claro-logo.svg",
   carouselItemFrame: "/landing/svg/carousel-items.svg",

@@ -30,7 +30,7 @@ export function StoreButtons({
       "transition-all duration-[160ms] ease-out hover:scale-[1.03] active:scale-[0.98]",
       "focus:outline-none focus:ring-2 focus:ring-cp-red/50 focus:ring-offset-2",
       size === "final"
-        ? "w-[clamp(96px,22vw,230px)] aspect-[90/29] md:w-[clamp(112px,13vw,184px)]"
+        ? "max-[415px]:w-[86px] w-[clamp(96px,22vw,230px)] aspect-[90/29] md:w-[clamp(112px,13vw,184px)]"
         : "w-[clamp(100px,25vw,245px)] aspect-[123/39]",
     ].join(" ");
 

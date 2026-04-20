@@ -27,7 +27,7 @@ export function FinalCTASection({ content, stores, phoneMockupSrc }: FinalCTASec
             sizes="(min-width: 768px) 16vw, 25vw"
           />
 
-          <h2 className="relative z-20 max-w-[min(58vw,760px)] text-center font-amx-bold text-[clamp(22px,5vw,58px)] italic leading-[0.98] tracking-[-0.045em] text-white md:flex-1 md:text-[clamp(26px,3.8vw,58px)]">
+          <h2 className="relative z-20 max-w-[min(58vw,760px)] text-center font-amx-bold max-[415px]:text-[19px] text-[clamp(22px,5vw,58px)] italic leading-[0.98] tracking-[-0.045em] text-white md:flex-1 md:text-[clamp(26px,3.8vw,58px)]">
             {headlineLines.map((line) => (
               <span key={line} className="block whitespace-nowrap">
                 {line}
