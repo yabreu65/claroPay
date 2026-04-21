@@ -13,6 +13,8 @@ export type CashbackCarouselSlidesProps = {
   slideRoles: SlideRole[];
   visibleIndex: number;
   onDotClick: (index: number) => void;
+  onSwipeNext?: () => void;
+  onSwipePrev?: () => void;
 };
 
 export type CashbackCarouselDotsProps = {

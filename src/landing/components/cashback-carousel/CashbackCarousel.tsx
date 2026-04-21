@@ -47,6 +47,14 @@ export function CashbackCarousel({ items, frameSrc }: CashbackCarouselProps) {
     setActiveStep((prev) => prev + forwardSteps);
   };
 
+  const goNext = () => {
+    setActiveStep((prev) => prev + 1);
+  };
+
+  const goPrev = () => {
+    setActiveStep((prev) => prev - 1);
+  };
+
   return (
     <div className="w-full flex flex-col items-center justify-center [--carousel-card-width:clamp(240px,68vw,340px)] [--carousel-stage-height:clamp(240px,56vw,360px)] max-[430px]:[--carousel-offset:240px] [--carousel-offset:270px] sm:[--carousel-offset:clamp(210px,48vw,520px)] sm:[--carousel-card-width:clamp(230px,31vw,430px)] sm:[--carousel-stage-height:clamp(210px,30vw,520px)]">
       <CashbackCarouselSlides
@@ -55,6 +63,8 @@ export function CashbackCarousel({ items, frameSrc }: CashbackCarouselProps) {
         slideRoles={slideRoles}
         visibleIndex={visibleIndex}
         onDotClick={goToDot}
+        onSwipeNext={goNext}
+        onSwipePrev={goPrev}
       />
     </div>
   );

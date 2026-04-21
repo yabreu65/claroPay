@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useLayoutEffect, useRef, type CSSProperties } from "react";
+import { useLayoutEffect, useRef, useCallback, type CSSProperties } from "react";
 import {
   getSlideClasses,
   getSlideTransform,
@@ -88,10 +88,14 @@ export function CashbackCarouselSlides({
   slideRoles,
   visibleIndex,
   onDotClick,
+  onSwipeNext,
+  onSwipePrev,
 }: CashbackCarouselSlidesProps) {
   const desktopCardRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const prevRectsRef = useRef<Record<string, DOMRect>>({});
   const hasInitializedRef = useRef(false);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const gestureHandledRef = useRef(false);
 
   useLayoutEffect(() => {
     if (typeof window === "undefined" || !window.matchMedia("(min-width: 640px)").matches) {
@@ -150,13 +154,46 @@ export function CashbackCarouselSlides({
     prevRectsRef.current = nextRects;
   }, [slideRoles]);
 
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    if (items.length <= 1) return;
+    touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    gestureHandledRef.current = false;
+  }, [items.length]);
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    if (!touchStartRef.current || items.length <= 1 || gestureHandledRef.current) return;
+    
+    const touch = e.changedTouches[0];
+    const dx = touch.clientX - touchStartRef.current.x;
+    const dy = touch.clientY - touchStartRef.current.y;
+    const absDx = Math.abs(dx);
+    const absDy = Math.abs(dy);
+    
+    const SWIPE_THRESHOLD = 40;
+    
+    if (absDx > SWIPE_THRESHOLD && absDx > absDy) {
+      gestureHandledRef.current = true;
+      if (dx < 0 && onSwipeNext) {
+        onSwipeNext();
+      } else if (dx > 0 && onSwipePrev) {
+        onSwipePrev();
+      }
+    }
+    
+    touchStartRef.current = null;
+  }, [items.length, onSwipeNext, onSwipePrev]);
+
   const prevItem = getItemByRole("prev", items, slideRoles);
   const activeItem = getItemByRole("active", items, slideRoles) ?? items[0];
   const nextItem = getItemByRole("next", items, slideRoles);
 
   return (
     <>
-      <div className="relative h-[var(--carousel-stage-height)] w-full sm:hidden">
+      <div 
+        className="relative h-[var(--carousel-stage-height)] w-full sm:hidden"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         {items.map((item, index) => {
           const role = slideRoles[index] ?? "hidden";
 
