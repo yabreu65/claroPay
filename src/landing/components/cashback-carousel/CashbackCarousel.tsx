@@ -9,6 +9,7 @@ import { CashbackCarouselSlides } from "@/landing/components/cashback-carousel/C
 
 export function CashbackCarousel({ items, frameSrc }: CashbackCarouselProps) {
   const [activeStep, setActiveStep] = useState(0);
+  const [pausedUntil, setPausedUntil] = useState(0);
 
   const visibleIndex =
     items.length === 0
@@ -19,11 +20,11 @@ export function CashbackCarousel({ items, frameSrc }: CashbackCarouselProps) {
     if (items.length <= 1) return;
 
     const interval = window.setInterval(() => {
-      setActiveStep((prev) => prev + 1);
+      setActiveStep((prev) => (Date.now() < pausedUntil ? prev : prev + 1));
     }, 3000);
 
     return () => window.clearInterval(interval);
-  }, [items.length]);
+  }, [items.length, pausedUntil]);
 
   const slideRoles = useMemo<SlideRole[]>(() => {
     return items.map((_, index) => {
@@ -44,14 +45,17 @@ export function CashbackCarousel({ items, frameSrc }: CashbackCarouselProps) {
     const current = visibleIndex;
     const forwardSteps = (targetIndex - current + items.length) % items.length;
     if (forwardSteps === 0) return;
+    setPausedUntil(Date.now() + 4500);
     setActiveStep((prev) => prev + forwardSteps);
   };
 
   const goNext = () => {
+    setPausedUntil(Date.now() + 4500);
     setActiveStep((prev) => prev + 1);
   };
 
   const goPrev = () => {
+    setPausedUntil(Date.now() + 4500);
     setActiveStep((prev) => prev - 1);
   };
 
