@@ -17,7 +17,7 @@ export function IntroSection({ content, stores }: IntroSectionProps) {
           {content.highlight}
         </p>
         <div className="mt-[clamp(14px,3.4vw,54px)] flex min-h-[clamp(44px,10vw,98px)] items-center justify-center">
-          <StoreButtons stores={stores} variant="light" layout="row" size="intro" />
+          <StoreButtons stores={stores} layout="row" size="intro" />
         </div>
       </div>
     </section>

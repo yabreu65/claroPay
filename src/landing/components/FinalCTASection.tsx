@@ -37,7 +37,7 @@ export function FinalCTASection({ content, stores, phoneMockupSrc }: FinalCTASec
         </div>
 
         <div className="relative md:absolute z-30 w-[89%] rounded-r-[999px] bg-[#de2626] py-[24px] md:py-4 pl-[clamp(10px,3vw,28px)] pr-[clamp(14px,5vw,52px)] md:order-1 md:flex md:w-[30%] md:shrink-0 md:items-center md:justify-center md:self-stretch  md:pl-[clamp(28px,4vw,64px)] md:pr-[clamp(44px,5vw,82px)]">
-          <StoreButtons stores={stores} variant="light" layout="column-md" size="final" />
+          <StoreButtons stores={stores} layout="column-md" size="final" />
         </div>
       </div>
     </section>
