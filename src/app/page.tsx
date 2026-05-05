@@ -1,5 +1,13 @@
-import { redirect } from "next/navigation";
-
 export default function HomePage() {
-  redirect("/claro-pay");
+  return (
+    <html lang="es">
+      <head>
+        <meta httpEquiv="refresh" content="0;url=/claro-pay" />
+        <title>Claro Pay</title>
+      </head>
+      <body>
+        <p>Redirigiendo a <a href="/claro-pay">Claro Pay</a>...</p>
+      </body>
+    </html>
+  );
 }

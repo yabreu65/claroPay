@@ -30,7 +30,7 @@ export function HeroSection({ logoSrc, bannerSrc }: HeroSectionProps) {
             height={262}
             className="block h-auto w-full"
             sizes="100vw"
-            preload
+            priority
           />
           <div className="absolute top-[55%] max-[400px]:left-[65%] left-[65%] lg:left-[62%] -translate-x-1/2 -translate-y-1/2 text-center">
             <h1 className="uppercase text-[#de271f] font-amx-black max-[400px]:text-[24px] text-[32px] sm:text-[48px] md:text-[54px] lg:text-[64px] xl:text-[85px] 2xl:text-[100px]  leading-none">Tu plata <br/> conectada </h1>
